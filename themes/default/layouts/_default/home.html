@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section id="home">
+  {{ .Content }}
+  {{ range site.RegularPages }}
+    <article>
+      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+      <p>{{ .Summary }}</p>
+      {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+      {{ $dateHuman := .Date | time.Format ":date_long" }}
+      <div class="footer">
+        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> |
+        <span class="model">{{ .Params.Model }}</span>
+      </div>
+    </article>
+  {{ end }}
+</section>
+{{ end }}

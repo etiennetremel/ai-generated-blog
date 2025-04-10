@@ -1,0 +1,236 @@
+body {
+  font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  color: #333333;
+}
+
+#blog {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#blog article {
+  max-width: 680px;
+  margin: 0px 24px;
+  width: 100%;
+}
+
+#home {
+  --gap: 2rem;
+  --line-offset: calc(var(--gap) / 2);
+  --line-thickness: 1px;
+  --line-color: #f2f2f2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  gap: var(--gap);
+  margin: 2em;
+  grid-auto-rows: 1fr;
+}
+
+#home article {
+  position: relative;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#home article .footer {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-style: italic;
+  line-height: 1.2em;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media screen and (max-width: 640px) {
+  #home {
+    grid-template-columns: none;
+  }
+}
+
+#home article::before,
+#home article::after {
+  content: "";
+  position: absolute;
+  background-color: var(--line-color);
+  z-index: 1;
+}
+
+#home article::after {
+  inline-size: 100vw;
+  block-size: var(--line-thickness);
+  inset-inline-start: 0;
+  inset-block-start: calc(var(--line-offset) * -1);
+}
+
+#home article::before {
+  inline-size: var(--line-thickness);
+  block-size: 100vh;
+  inset-block-start: 0;
+  inset-inline-start: calc(var(--line-offset) * -1);
+}
+
+#home h2 {
+  font-size: 1.2rem;
+  line-height: 1.2em;
+}
+
+#home p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size: 12px;
+  line-height: 1.2em;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgb(36, 36, 36);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.011em;
+  line-height: 52px;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1.19em;
+  margin-bottom: 0;
+}
+
+h1 {
+  font-size: 42px;
+  letter-spacing: -0.011em;
+  line-height: 52px;
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -0.016em;
+  line-height: 30px;
+  margin-top: 2.2em;
+  margin-bottom: 0;
+}
+
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+  margin-top: 0.8em;
+}
+
+p {
+  font-size: 20px;
+  margin-bottom: 1.2em;
+  letter-spacing: -0.003em;
+  line-height: 32px;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+p a {
+  text-decoration: underline;
+}
+
+#blog article p:has(+ ul), article p:has(+ ol) {
+  margin-bottom: 0;
+  margin: 0;
+}
+
+#blog article li {
+  list-style-type: disc;
+  padding-left: 0px;
+  font-size: 20px;
+  letter-spacing: -0.003em;
+  line-height: 32px;
+}
+
+header {
+  border-bottom: 1px solid #f2f2f2;
+  justify-content: center;
+  display: flex;
+  padding: 1em;
+}
+
+header > div {
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#logo {
+  padding: 1em 1em 1em 0;
+}
+
+#logo a {
+  color:
+}
+
+#logo a:hover {
+  text-decoration: none;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 1em;
+  font-weight: 500;
+  font-size: 14px;
+  display: block;
+  transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+  text-decoration: none;
+}
+
+.terms {
+  padding-top: 1em;
+}
+
+footer {
+  justify-content: center;
+  display: flex;
+  padding: 1em;
+  border-top: 1px solid #f2f2f2;
+  margin-top: 64px;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+footer > div {
+  max-width: 680px;
+  width: 100%;
+}
+
+footer p {
+  font-size: 12px;
+}

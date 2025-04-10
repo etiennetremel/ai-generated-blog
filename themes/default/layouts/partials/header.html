@@ -1,0 +1,8 @@
+<div>
+  <div id="logo">
+    <a href="{{ .Site.Home.Permalink }}">{{ site.Title }}</a>
+  </div>
+  <div id="menu">
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+  </div>
+</div>
