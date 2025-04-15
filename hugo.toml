@@ -1,4 +1,4 @@
 baseURL = 'https://blog.kogusenn.com/'
 languageCode = 'en-us'
-title = 'AI-generated blog post'
+title = 'AI-generated blog'
 theme = 'default'
