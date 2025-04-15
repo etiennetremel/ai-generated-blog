@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://blog.kogusenn.com/'
 languageCode = 'en-us'
-title = 'Tech blog'
+title = 'AI-generated blog post'
 theme = 'default'

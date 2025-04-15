@@ -1,4 +1,4 @@
-baseURL = 'https://blog.kogusenn.com/'
+baseURL = 'https://example.com/'
 languageCode = 'en-US'
 title = 'Tech blog'
 
