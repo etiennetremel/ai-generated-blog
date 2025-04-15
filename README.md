@@ -1,4 +1,6 @@
-# AI generated tech blog
+# AI generated blog
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1a34df76-38de-42a1-8bcc-074f144a4b83/deploy-status)](https://app.netlify.com/sites/ai-generated-tech-blog/deploys)
 
 This repository demonstrate the use of [Pydantic AI](https://ai.pydantic.dev)
 together with [Hugo](https://gohugo.io/) to generate blog posts on a given
