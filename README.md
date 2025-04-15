@@ -12,6 +12,10 @@ topic using various models (OpenAI ChatGPT 4o, Gemini).
 >  assist in generating blog posts. Use this responsibly and with a focus on
 >  transparency, originality, and value.
 
+## Overview
+
+The diagram below outlines the end-to-end workflow for generating blog posts.
+
 ```mermaid
 flowchart TD
     A[Topic Agent]
