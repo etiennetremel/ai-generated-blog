@@ -168,13 +168,14 @@ p a {
 .warning > div {
   max-width: 680px;
   margin: 24px -24px;
-  padding: 24px;
-  background: #f7f7f7;
+  padding: 18px 24px;
+  background: #fafafa;
   border-radius: 15px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid #f2f2f2;
 }
 
 .warning .icon {
@@ -184,6 +185,9 @@ p a {
 
 .warning .note {
   font-size: 0.75em;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  letter-spacing: -0.011em;
 }
 
 .warning .note a {
@@ -276,7 +280,9 @@ nav ul li a:hover {
 }
 
 .terms {
-  padding-top: 1em;
+  margin: 54px -24px 34px -24px;
+  padding: 18px 24px;
+  border-top: 1px solid #f2f2f2;
 }
 
 footer {
