@@ -18,18 +18,25 @@ The diagram below outlines the end-to-end workflow for generating blog posts.
 
 ```mermaid
 flowchart TD
-    A[Topic Agent]
-    B[Post Agent]
-    C[Feedback Agent]
-    D{Quality score > 0.8 ?}
+    A[Start]
+    B((Topic Agent))
+    C((Post Agent))
+    D((Feedback Agent))
+    E{Quality score > 0.8 ?}
+    F(Editorial guideline)
+    G[Publish post]
+    H[End]
+    I(Existing blog posts)
 
-    E(Publish post)
-
-    A -- Generate topic that doesn't<br>overlap with existing posts --> B
-    B -- Draft post --> C
-    C --> D
-    D -- Yes --> E
-    D -- No, provide feedback and<br>ask to revisit --> B
+    A ==> B
+    B -.-> I
+    B == Generate topic that doesn't<br>overlap with existing posts ==> C
+    C == Draft post ==> D
+    E -.-> F
+    D ==> E
+    E == Yes, format post<br>with metadata ==> G
+    E -- No, provide feedback and<br>ask to revisit --> C
+    G ==> H
 ```
 
 ## Generating blog posts

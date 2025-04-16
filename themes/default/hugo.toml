@@ -3,7 +3,7 @@ languageCode = 'en-US'
 title = 'Tech blog'
 
 [[menus.main]]
-name = 'Home'
+name = 'Posts'
 pageRef = '/'
 weight = 10
 

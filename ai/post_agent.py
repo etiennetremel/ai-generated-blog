@@ -40,7 +40,8 @@ post_agent = Agent(
         - **title:** Concise, descriptive, engaging.
         - **summary:** A short, clear, and informative summary (35 words max).
         - **blog_post:** Complete blog content formatted in markdown (follows
-          editorial guidelines).
+          editorial guidelines, DOT NOT include the post title within the
+          content).
         - **tags:** Relevant keywords or phrases (3–6 tags max, lowercase, no
           hashtags, separated by commas).
 
