@@ -32,7 +32,7 @@ flowchart TD
     B -.-> I
     B == Generate topic that doesn't<br>overlap with existing posts ==> C
     C == Draft post ==> D
-    E -.-> F
+    D -.-> F
     D ==> E
     E == Yes, format post<br>with metadata ==> G
     E -- No, provide feedback and<br>ask to revisit --> C
