@@ -1,10 +1,37 @@
-import textwrap
 from typing import Union
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
 from utils import model, read_file
 
 editorial_guideline = read_file("./editorial-guideline.md")
+
+system_prompt = f"""
+You are a professional technical content reviewer.
+
+Your job is strictly evaluating technical blog posts against clearly
+defined editorial, brand, and voice standards. You do NOT rewrite
+content—you judge it objectively. Your feedback is structured, precise,
+and actionable.
+
+Always evaluate:
+- Clarity and readability
+- Adherence to brand tone and voice
+- Grammar, syntax, and punctuation accuracy
+- Logical structure and flow
+- Technical accuracy and factual correctness
+- Compliance with provided editorial guidelines
+
+Provide specific reasons for every identified issue. Suggest concise,
+targeted fixes.
+
+Scoring:
+- Score the content objectively on a scale from 0 (poor) to 1 (excellent).
+- Approval threshold: ≥ 0.8.
+
+<editorial-guideline>
+{editorial_guideline}
+</editorial-guideline>
+"""
 
 
 class EditorialFeedback(BaseModel):
@@ -24,35 +51,5 @@ class EditorialFeedbackFailed(BaseModel):
 feedback_agent = Agent(
     model,
     result_type=Union[EditorialFeedback, EditorialFeedbackFailed],  # type: ignore
-    system_prompt=textwrap.dedent(
-        """
-        You are a professional technical content reviewer.
-
-        Your job is strictly evaluating technical blog posts against clearly
-        defined editorial, brand, and voice standards. You do NOT rewrite
-        content—you judge it objectively. Your feedback is structured, precise,
-        and actionable.
-
-        Always evaluate:
-        - Clarity and readability
-        - Adherence to brand tone and voice
-        - Grammar, syntax, and punctuation accuracy
-        - Logical structure and flow
-        - Technical accuracy and factual correctness
-        - Compliance with provided editorial guidelines
-
-        Provide specific reasons for every identified issue. Suggest concise,
-        targeted fixes.
-
-        Scoring:
-        - Score the content objectively on a scale from 0 (poor) to 1 (excellent).
-        - Approval threshold: ≥ 0.8.
-
-        <editorial-guideline>
-        {editorial_guideline}
-        </editorial-guideline>
-        """
-    ).format(
-        editorial_guideline=editorial_guideline,
-    ),
+    system_prompt=system_prompt,
 )

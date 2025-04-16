@@ -31,7 +31,7 @@ async def main():
     print(topic_result.usage())
 
     # Generate a blog post based on the topic
-    post_request = textwrap.dedent(
+    post_user_prompt = textwrap.dedent(
         """
         Write a complete, publication-ready blog post about the following
         topic:
@@ -53,7 +53,7 @@ async def main():
     )
 
     post_result = await post_agent.run(
-        post_request,
+        post_user_prompt,
         message_history=message_history,
         usage=usage,
         usage_limits=usage_limits,
@@ -69,7 +69,7 @@ async def main():
     # Get editorial feedback and revise as needed
     attempts = 1
     while True:
-        feedback_request = textwrap.dedent(
+        feedback_user_prompt = textwrap.dedent(
             """
             Review the provided blog post content against the Writing Criteria and Editorial Guidelines.
 
@@ -108,7 +108,7 @@ async def main():
         )
 
         editorial_feedback_result = await feedback_agent.run(
-            feedback_request,
+            feedback_user_prompt,
             message_history=message_history,
             usage=usage,
             usage_limits=usage_limits,
@@ -126,7 +126,7 @@ async def main():
         if editorial_feedback_result.data.approved:  # type: ignore
             break
 
-        revision_request = textwrap.dedent(
+        revision_user_prompt = textwrap.dedent(
             """
             The previously submitted blog post has been reviewed. Clearly
             incorporate all provided review feedback into your revision.
@@ -160,7 +160,7 @@ async def main():
         )
 
         post_result = await post_agent.run(
-            revision_request,
+            revision_user_prompt,
             message_history=message_history,
             usage=usage,
             usage_limits=usage_limits,
