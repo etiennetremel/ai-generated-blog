@@ -34,7 +34,7 @@ Scoring:
 """
 
 
-class EditorialFeedback(BaseModel):
+class Feedback(BaseModel):
     approved: bool = Field(
         description="Whether the blog post matches editorial guidelines"
     )
@@ -44,12 +44,12 @@ class EditorialFeedback(BaseModel):
     score: float = Field(..., description="Quality score")
 
 
-class EditorialFeedbackFailed(BaseModel):
+class FeedbackFailed(BaseModel):
     pass
 
 
 feedback_agent = Agent(
     model,
-    result_type=Union[EditorialFeedback, EditorialFeedbackFailed],  # type: ignore
+    result_type=Union[Feedback, FeedbackFailed],  # type: ignore
     system_prompt=system_prompt,
 )

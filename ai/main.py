@@ -4,10 +4,10 @@ import os
 import textwrap
 from datetime import datetime, timezone
 from pydantic_ai.usage import Usage, UsageLimits
-from utils import read_file, slugify
-from topic_agent import topic_agent
-from feedback_agent import feedback_agent
-from post_agent import post_agent
+from utils import read_file, slugify, get_existing_blog_titles
+from topic_agent import topic_agent, TopicFailed
+from feedback_agent import feedback_agent, FeedbackFailed
+from post_agent import post_agent, PostFailed
 
 
 async def main():
@@ -16,18 +16,30 @@ async def main():
     usage_limits = UsageLimits(request_limit=20)
     editorial_guideline = read_file("./editorial-guideline.md")
 
+    topic_user_prompt = textwrap.dedent(
+        """
+        Generate a single, high-quality blog post topic clearly aligned
+        with the editorial guidelines.
+
+        The topic must NOT overlap or duplicate the following existing
+        blog post titles:
+        {titles}
+        """
+    ).format(titles="- " + "\n- ".join(get_existing_blog_titles("../content/posts")))
+
     # Choose a topic
     topic_result = await topic_agent.run(
+        topic_user_prompt,
         message_history=message_history,
         usage=usage,
         usage_limits=usage_limits,
     )
-    if topic_result.data.__class__.__name__ == "TopicFailed":
+    if isinstance(topic_result.output, TopicFailed):
         print("Failed choosing topic")
-        print(topic_result.data)
+        print(topic_result.output)
         return
 
-    print(topic_result.data)
+    print(topic_result.output)
     print(topic_result.usage())
 
     # Generate a blog post based on the topic
@@ -39,17 +51,16 @@ async def main():
         "{topic}"
 
         # Clearly structure your response as follows:
-        - **Title:** Clearly written in sentence case, concise, engaging.
-        - **Summary:** Clear, informative summary of the main points (35 words max).
-        - **Blog_post:** Complete blog content clearly formatted in markdown,
-          adhering fully to editorial guidelines.
-        - **Tags:** 3–6 relevant tags, lowercase, comma-separated, no hashtags.
-
-        Ensure the content strictly meets all editorial guidelines and aligns
-        with brand tone and voice.
+        - **title:** Concise, descriptive, engaging.
+        - **summary:** A short, clear, and informative summary (35 words max).
+        - **blog_post:** Complete blog content formatted in markdown (follows
+        editorial guidelines, DOT NOT include the post title within the
+        content).
+        - **tags:** Relevant keywords or phrases (3–6 tags max, lowercase, no
+        hashtags, separated by commas).
         """
     ).format(
-        topic=topic_result.data.topic  # type: ignore
+        topic=topic_result.output.topic  # type: ignore
     )
 
     post_result = await post_agent.run(
@@ -58,12 +69,12 @@ async def main():
         usage=usage,
         usage_limits=usage_limits,
     )
-    if post_result.data.__class__.__name__ == "PostFailed":
+    if post_result.output.__class__.__name__ == "PostFailed":
         print("Failed creating post")
         print(post_result)
         return
 
-    print(post_result.data)
+    print(post_result.output)
     print(post_result.usage())
 
     # Get editorial feedback and revise as needed
@@ -104,26 +115,23 @@ async def main():
             </post>
             """
         ).format(
-            post=post_result.data.post  # type: ignore
+            post=post_result.output.post  # type: ignore
         )
 
-        editorial_feedback_result = await feedback_agent.run(
+        feedback_result = await feedback_agent.run(
             feedback_user_prompt,
             message_history=message_history,
             usage=usage,
             usage_limits=usage_limits,
         )
-        if (
-            editorial_feedback_result.data.__class__.__name__
-            == "EditorialFeedbackFailed"
-        ):
+        if isinstance(feedback_result.output, FeedbackFailed):
             print("Failed providing feedback")
             return
 
-        print(f"[{attempts}]", editorial_feedback_result.data)
-        print(editorial_feedback_result.usage())
+        print(f"[{attempts}]", feedback_result.output)
+        print(feedback_result.usage())
 
-        if editorial_feedback_result.data.approved:  # type: ignore
+        if feedback_result.output.approved:  # type: ignore
             break
 
         revision_user_prompt = textwrap.dedent(
@@ -154,8 +162,8 @@ async def main():
             </editorial-guideline>
             """
         ).format(
-            feedback=editorial_feedback_result.data.notes,  # type: ignore
-            post=post_result.data.post,  # type: ignore
+            feedback=feedback_result.output.notes,  # type: ignore
+            post=post_result.output.post,  # type: ignore
             editorial_guideline=editorial_guideline,
         )
 
@@ -165,29 +173,29 @@ async def main():
             usage=usage,
             usage_limits=usage_limits,
         )
-        if post_result.data.__class__.__name__ == "PostFailed":
+        if isinstance(post_result.output, PostFailed):
             print("Failed revisiting post")
             return
 
         attempts += 1
 
     print("---Final Post---")
-    print(post_result.data)
+    print(post_result.output)
     print(post_result.usage())
 
     # Write the final post to a file
-    slug = slugify(post_result.data.title)
+    slug = slugify(post_result.output.title)
     output_path = os.path.join("../content/posts", f"{slug}.md")
     with open(output_path, "a", encoding="utf-8") as file:
         file.write("+++\n")
         file.write(f"date = '{datetime.now(timezone.utc).isoformat()}'\n")
-        file.write(f"title = '{post_result.data.title}'\n")
-        file.write(f"summary = '{post_result.data.summary}'\n")  # type: ignore
+        file.write(f"title = '{post_result.output.title}'\n")
+        file.write(f"summary = '{post_result.output.summary}'\n")  # type: ignore
         file.write(f"draft = 'false'\n")
         file.write(f"model = '{os.getenv('MODEL', 'openai:gpt-4.1')}'\n")
-        file.write(f"tags = {json.dumps(post_result.data.tags)}\n")  # type: ignore
+        file.write(f"tags = {json.dumps(post_result.output.tags)}\n")  # type: ignore
         file.write("+++\n\n")
-        file.write(post_result.data.post)  # type: ignore
+        file.write(post_result.output.post)  # type: ignore
 
 
 if __name__ == "__main__":

@@ -19,14 +19,8 @@ Your responsibilities:
 - Match content precisely to brand brief (voice, tone, values, audience).
 - Deliver content strictly formatted as defined below.
 
-For every generated blog post, you must return:
-- **title:** Concise, descriptive, engaging.
-- **summary:** A short, clear, and informative summary (35 words max).
-- **blog_post:** Complete blog content formatted in markdown (follows
-editorial guidelines, DOT NOT include the post title within the
-content).
-- **tags:** Relevant keywords or phrases (3–6 tags max, lowercase, no
-hashtags, separated by commas).
+Ensure the content strictly meets all editorial guidelines and aligns
+with brand tone and voice.
 
 Always produce content ready for immediate review.
 

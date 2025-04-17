@@ -19,6 +19,9 @@ def slugify(name):
 def get_existing_blog_titles(directory):
     titles = []
     for filename in os.listdir(directory):
+        if filename == "_index.md":
+            continue
+
         filepath = os.path.join(directory, filename)
         if os.path.isfile(filepath):
             with open(filepath, "r", encoding="utf-8") as f:
