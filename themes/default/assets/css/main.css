@@ -28,6 +28,7 @@ h1 {
   letter-spacing: -0.011em;
   line-height: 52px;
   margin-bottom: 32px;
+  margin-top: 1em;
 }
 
 h2 {
@@ -50,6 +51,16 @@ p {
   line-height: 32px;
 }
 
+code {
+  font-size: 0.8em;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.highlight code {
+  padding: 1em;
+  display: block;
+}
+
 a {
   color: #333;
   text-decoration: none;
@@ -62,6 +73,46 @@ a:hover {
 
 p a {
   text-decoration: underline;
+}
+
+/* TABLE */
+table {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgb(36, 36, 36);
+  font-style: normal;
+  letter-spacing: -0.011em;
+  line-height: 1.4em;
+  font-size: 0.9em;
+  margin: 4em -100px;
+  width: 880px;
+}
+
+@media screen and (max-width: 880px) {
+  table {
+    margin: 4em 0;
+    width: 100%;
+  }
+}
+
+table thead {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+table th {
+  text-align: left;
+}
+
+table td, table th {
+  padding: .5rem .75rem;
+  vertical-align: middle;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
 }
 
 /* HEADER */
@@ -112,6 +163,16 @@ nav ul li a {
 
 nav ul li a:hover {
   text-decoration: none;
+}
+
+section {
+  padding: 0;
+}
+
+@media screen and (max-width: 680px) {
+  section {
+    padding: 1em;
+  }
 }
 
 /* HOME */

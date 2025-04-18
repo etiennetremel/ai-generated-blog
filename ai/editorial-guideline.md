@@ -25,7 +25,7 @@ Strictly follow the following requirement.
 - Line length: max 120 characters.  
 - Follow brand voice and tone (see Brand Brief).  
 - If you don’t know something, say so—don’t guess or make it up.  
-- Use sentence case for headings.
+- Use sentence case for headings (dot not capitalize such as "This Is A Title", instead do "This is a title")
 
 **Avoid**
 - Filler phrases, wordy, vague language, or repetition.  
