@@ -1,0 +1,13 @@
+title = 'AI-Generated blog'
+titleAddition = 'Posts'
+titleSeparator = '-'
+description = "A blog featuring AI-generated posts created with different language models."
+
+# images = ["logo-1280x640.png"]
+ogLocale = "en_US"
+domainTLD = "kogusenn.com"
+titleHome = "AI-Generated blog posts"
+
+## Twitter Cards
+twitterSite = "@kogusenn"
+twitterCreator = "@kogusenn"

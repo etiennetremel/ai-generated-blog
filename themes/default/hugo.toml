@@ -1,6 +1,8 @@
 baseURL = 'https://example.com/'
 languageCode = 'en-US'
-title = 'Tech blog'
+title = 'AI-Generated blog'
+titleAddition = ''
+description = ''
 
 [[menus.main]]
 name = 'Posts'
