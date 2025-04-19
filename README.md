@@ -4,7 +4,7 @@
 
 This repository demonstrate how to use [Pydantic AI][pydantic-ai] with
 [Hugo][hugo] to generate blog posts on a given topic using different models
-(OpenAI ChatGPT 4o, Gemini).
+(OpenAI GPT 4o, GPT 4.1, o3, Google Gemini 2.5, xAI Grok 2, Grok 3, etc).
 
 > [!WARNING]
 >  This project is not intended to flood the web with low-quality AI-generated
