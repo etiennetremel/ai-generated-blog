@@ -69,6 +69,16 @@ export MODEL=google-vertex:gemini-2.5-pro-preview-03-25
 python main.py
 ```
 
+### xAI Grok
+
+```bash
+export MODEL=openai:grok-3-mini-beta
+export OPENAI_API_KEY=your-grok-api-key
+export OPENAI_BASE_URL=https://api.x.ai/v1
+
+python main.py
+```
+
 ## Running Hugo
 
 ```bash
