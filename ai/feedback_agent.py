@@ -21,8 +21,8 @@ Always evaluate:
 - Technical accuracy and factual correctness
 - Compliance with provided editorial guidelines
 
-Provide specific reasons for every identified issue. Suggest concise,
-targeted fixes.
+Provide specific and detailed reasons for every identified issue. Suggest
+concise, targeted fixes.
 
 Scoring:
 - Score the content objectively on a scale from 0 (poor) to 1 (excellent).
