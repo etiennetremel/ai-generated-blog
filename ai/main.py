@@ -4,7 +4,7 @@ import os
 import textwrap
 from datetime import datetime, timezone
 from pydantic_ai.usage import Usage, UsageLimits
-from utils import read_file, slugify, get_existing_blog_titles
+from utils import read_file, slugify, get_existing_blog_titles, get_sanitized_model
 from topic_agent import topic_agent, TopicFailed
 from feedback_agent import feedback_agent, FeedbackFailed
 from post_agent import post_agent, PostFailed
@@ -192,7 +192,7 @@ async def main():
         file.write(f"title = '{post_result.output.title}'\n")
         file.write(f"summary = '{post_result.output.summary}'\n")  # type: ignore
         file.write(f"draft = 'false'\n")
-        file.write(f"model = '{os.getenv('MODEL', 'openai:gpt-4.1')}'\n")
+        file.write(f"model = '{get_sanitized_model()}'\n")
         file.write(f"tags = {json.dumps(post_result.output.tags)}\n")  # type: ignore
         file.write("+++\n\n")
         file.write(post_result.output.post)  # type: ignore

@@ -3,7 +3,7 @@ date = '2025-04-19T12:31:42.916349+00:00'
 title = 'Balancing Automation and Human Oversight in Cloud-Native Incident Response'
 summary = 'Learn how to balance automation and human oversight in cloud-native incident response to ensure speed, accuracy, and control in dynamic environments.'
 draft = 'false'
-model = 'openai:grok-3-fast-beta'
+model = 'xai:grok-3-fast-beta'
 tags = ["cloud-native", "incident response", "automation", "human oversight", "kubernetes", "monitoring"]
 +++
 

@@ -4,6 +4,17 @@ import re
 model = os.getenv("MODEL", "openai:gpt-4.1")
 
 
+def get_sanitized_model():
+    """
+    Return correct model based on Pydantic configuration
+    In the case of Grok, the xAI API is compatible with the OpenAI API which
+    Pydantic is using. so openai:grok-3 would become xai:grok-3
+    """
+    if "grok" in model:
+        return model.replace("openai", "xai")
+    return model
+
+
 def read_file(path):
     with open(path, encoding="utf-8") as f:
         return f.read()

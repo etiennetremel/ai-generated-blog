@@ -3,7 +3,7 @@ date = '2025-04-19T12:22:18.737295+00:00'
 title = 'Why progressive delivery matters for your cloud-native deployments'
 summary = 'Progressive delivery minimizes risks in cloud-native deployments by rolling out updates gradually. Learn why it matters, how it reduces errors, and its real-world benefits for safer, faster releases.'
 draft = 'false'
-model = 'openai:grok-3'
+model = 'xai:grok-3'
 tags = ["progressive delivery", "cloud-native", "deployment strategies", "canary releases", "microservices"]
 +++
 

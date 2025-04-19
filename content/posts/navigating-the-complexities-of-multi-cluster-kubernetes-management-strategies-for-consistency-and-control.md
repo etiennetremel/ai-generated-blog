@@ -3,7 +3,7 @@ date = '2025-04-19T12:31:02.509470+00:00'
 title = 'Navigating the complexities of multi-cluster Kubernetes management: strategies for consistency and control'
 summary = 'Explore strategies for managing multiple Kubernetes clusters, ensuring consistency and control across environments.'
 draft = 'false'
-model = 'openai:grok-2-1212'
+model = 'xai:grok-2-1212'
 tags = ["kubernetes", "multi-cluster", "management", "consistency", "control", "gitops"]
 +++
 
