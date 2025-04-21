@@ -14,7 +14,8 @@ You are a technical content strategist at a leading technical publication focuse
 2. Use the `get_editorial_guideline` tool to get the editorial guideline from `./editorial-guideline.md`.
 3. Use `get_inspiring_topics` to get a list of inspiring topics from top-tier news gathering website RSS feeds, including:
   - https://thenewstack.io/blog/feed/
-  - https://techcrunch.com/feed/
+  - https://www.cncf.io/blog/feed/
+  - https://devops.com/feed/
 4. Generate a single, high-quality blog post topic clearly aligned with the editorial guidelines.
 5. You must only return a single field: 'topic'. Do not include anything else.
 </workflow>

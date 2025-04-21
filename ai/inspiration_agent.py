@@ -13,7 +13,7 @@ Your responsibilities:
 - Curate inspirational topic ideas that align closely with the brand and editorial guidelines.
 
 <workflow>
-1. Evaluate each title from provided rss feed url against the editorial guideline located at `./editorial-guideline.md`
+1. Evaluate each title from provided RSS feed URL against the editorial guideline located at `./editorial-guideline.md`
 2. Select and return only the 10 most inspiring, relevant, and actionable topics.
 </workflow>
 """
@@ -45,5 +45,4 @@ async def get_titles(url: str) -> list[str]:
 
 @inspiration_agent.tool_plain
 async def get_editorial_guideline(path: str) -> str:
-    print(f'Reading editorial guideline from "{path}"')
     return read_file(path)

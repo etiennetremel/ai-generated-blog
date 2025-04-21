@@ -24,20 +24,22 @@ flowchart TD
     Post(((Post Agent)))
     Feedback(((Feedback Agent)))
     QualityCondition{Quality score > 0.8 ?}
-    EditorialGuideline(Editorial guideline)
+    EditorialGuideline@{ shape: doc, label: "Editorial guideline" }
     Publish[Publish post]
     End[End]
-    ExistingBlogPosts(Existing blog posts)
+    ExistingBlogPosts@{ shape: doc, label: "Existing blog posts" }
     TNS@{ shape: text, label: "thenewstack.io/blog/feed"}
-    TC@{ shape: text, label: "techcrunch.com/feed"}
+    DO@{ shape: text, label: "devops.com/feed"}
+    CNCF@{ shape: text, label: "www.cncf.io/blog/feed"}
 
     Start ==> Topic
     Topic -.-> EditorialGuideline
-    Topic -. Retrive post title<br>from file system .-> ExistingBlogPosts
+    Topic -. Retrieve post title<br>from file system .-> ExistingBlogPosts
     Topic ==> Inspiration
     Inspiration -.-> EditorialGuideline
     Inspiration -. Fetch RSS feed .-> TNS
-    Inspiration -. Fetch RSS feed .-> TC
+    Inspiration -. Fetch RSS feed .-> DO
+    Inspiration -. Fetch RSS feed .-> CNCF
     Topic == Generate topic that doesn't<br>overlap with existing posts ==> Post
     Post == Draft post ==> Feedback
     Post -.-> EditorialGuideline
