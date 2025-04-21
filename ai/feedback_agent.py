@@ -3,9 +3,7 @@ from pydantic import BaseModel, Field
 from pydantic_ai import Agent
 from utils import model, read_file
 
-editorial_guideline = read_file("./editorial-guideline.md")
-
-system_prompt = f"""
+instructions = """
 You are a professional technical content reviewer.
 
 Your job is strictly evaluating technical blog posts against clearly
@@ -21,16 +19,16 @@ Always evaluate:
 - Technical accuracy and factual correctness
 - Compliance with provided editorial guidelines
 
-Provide specific and detailed reasons for every identified issue. Suggest
-concise, targeted fixes.
+<workflow>
+1. Use the `get_editorial_guideline` tool to get the editorial guideline from `./editorial-guideline.md`.
+2. Evaluate blog posts againts editorial guideline.
+3. Score and provide specific and detailed reasons for every identified issue. Suggest concise, targeted fixes.
+</workflow>
 
-Scoring:
+<scoring>
 - Score the content objectively on a scale from 0 (poor) to 1 (excellent).
 - Approval threshold: ≥ 0.8.
-
-<editorial-guideline>
-{editorial_guideline}
-</editorial-guideline>
+</scoring>
 """
 
 
@@ -51,5 +49,10 @@ class FeedbackFailed(BaseModel):
 feedback_agent = Agent(
     model,
     result_type=Union[Feedback, FeedbackFailed],  # type: ignore
-    system_prompt=system_prompt,
+    instructions=instructions,
 )
+
+
+@feedback_agent.tool_plain
+async def get_editorial_guideline(path: str) -> str:
+    return read_file(path)

@@ -4,7 +4,7 @@ import os
 import textwrap
 from datetime import datetime, timezone
 from pydantic_ai.usage import Usage, UsageLimits
-from utils import read_file, slugify, get_existing_blog_titles, get_sanitized_model
+from utils import slugify, get_sanitized_model
 from topic_agent import topic_agent, TopicFailed
 from feedback_agent import feedback_agent, FeedbackFailed
 from post_agent import post_agent, PostFailed
@@ -14,22 +14,10 @@ async def main():
     message_history = None
     usage = Usage()
     usage_limits = UsageLimits(request_limit=20)
-    editorial_guideline = read_file("./editorial-guideline.md")
-
-    topic_user_prompt = textwrap.dedent(
-        """
-        Generate a single, high-quality blog post topic clearly aligned
-        with the editorial guidelines.
-
-        The topic must NOT overlap or duplicate the following existing
-        blog post titles:
-        {titles}
-        """
-    ).format(titles="- " + "\n- ".join(get_existing_blog_titles("../content/posts")))
 
     # Choose a topic
     topic_result = await topic_agent.run(
-        topic_user_prompt,
+        "Give me a relevant topic",
         message_history=message_history,
         usage=usage,
         usage_limits=usage_limits,
@@ -156,15 +144,10 @@ async def main():
             <post>
             {post}
             </post>
-
-            <editorial-guideline>
-            {editorial_guideline}
-            </editorial-guideline>
             """
         ).format(
             feedback=feedback_result.output.notes,  # type: ignore
             post=post_result.output.post,  # type: ignore
-            editorial_guideline=editorial_guideline,
         )
 
         post_result = await post_agent.run(

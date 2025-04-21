@@ -18,26 +18,34 @@ The diagram below outlines the end-to-end workflow for generating blog posts.
 
 ```mermaid
 flowchart TD
-    A[Start]
-    B((Topic Agent))
-    C((Post Agent))
-    D((Feedback Agent))
-    E{Quality score > 0.8 ?}
-    F(Editorial guideline)
-    G[Publish post]
-    H[End]
-    I(Existing blog posts)
+    Start[Start]
+    Topic(((Topic Agent)))
+    Inspiration(((Inspiration Agent)))
+    Post(((Post Agent)))
+    Feedback(((Feedback Agent)))
+    QualityCondition{Quality score > 0.8 ?}
+    EditorialGuideline(Editorial guideline)
+    Publish[Publish post]
+    End[End]
+    ExistingBlogPosts(Existing blog posts)
+    TNS@{ shape: text, label: "thenewstack.io/blog/feed"}
+    TC@{ shape: text, label: "techcrunch.com/feed"}
 
-    A ==> B
-    B -.-> I
-    B == Generate topic that doesn't<br>overlap with existing posts ==> C
-    C == Draft post ==> D
-    C -.-> F
-    D -.-> F
-    D ==> E
-    E == Yes, format post<br>with metadata ==> G
-    E -- No, provide feedback and<br>ask to revisit --> C
-    G ==> H
+    Start ==> Topic
+    Topic -.-> EditorialGuideline
+    Topic -. Retrive post title<br>from file system .-> ExistingBlogPosts
+    Topic ==> Inspiration
+    Inspiration -.-> EditorialGuideline
+    Inspiration -. Fetch RSS feed .-> TNS
+    Inspiration -. Fetch RSS feed .-> TC
+    Topic == Generate topic that doesn't<br>overlap with existing posts ==> Post
+    Post == Draft post ==> Feedback
+    Post -.-> EditorialGuideline
+    Feedback -.-> EditorialGuideline
+    Feedback ==> QualityCondition
+    QualityCondition == Yes, format post<br>with metadata ==> Publish
+    QualityCondition -- No, provide feedback and<br>ask to revisit --> Post
+    Publish ==> End
 ```
 
 ## Generating blog posts

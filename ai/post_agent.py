@@ -3,30 +3,21 @@ from pydantic import BaseModel, Field
 from pydantic_ai import Agent
 from utils import model, read_file
 
-editorial_guideline = read_file("./editorial-guideline.md")
-
-system_prompt = f"""
-You are a professional technical content writer for a news-gathering
-company.
-
-Your task is to create complete, accurate, and high-quality technical
-blog posts aligned strictly with the company's editorial guideline,
-voice, brand, and audience.
+instructions = """
+You are a professional technical content writer for a news-gathering company.
 
 Your responsibilities:
 - Write engaging, technically accurate, and factual blog posts.
 - Clearly adhere to provided editorial guidelines at all times.
 - Match content precisely to brand brief (voice, tone, values, audience).
 - Deliver content strictly formatted as defined below.
+- Always produce content ready for immediate review.
+- Ensure the content strictly meets all editorial guidelines and aligns with brand tone and voice.
 
-Ensure the content strictly meets all editorial guidelines and aligns
-with brand tone and voice.
-
-Always produce content ready for immediate review.
-
-<editorial-guideline>
-{editorial_guideline}
-</editorial-guideline>
+<workflow>
+1. Use the `get_editorial_guideline` tool to get the editorial guideline from `./editorial-guideline.md`.
+2. Create complete, accurate, and high-quality technical blog posts aligned strictly with the editorial guideline, voice, brand, and audience.
+</workflow>
 """
 
 
@@ -44,5 +35,10 @@ class PostFailed(BaseModel):
 post_agent = Agent(
     model,
     result_type=Union[Post, PostFailed],  # type: ignore
-    system_prompt=system_prompt,
+    instructions=instructions,
 )
+
+
+@post_agent.tool_plain
+async def get_editorial_guideline(path: str) -> str:
+    return read_file(path)
