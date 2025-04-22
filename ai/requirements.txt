@@ -1,2 +1,4 @@
-pydantic-ai==0.1.3
 feedparser==6.0.11
+pydantic-ai==0.1.3
+python-frontmatter==1.1.0
+toml==0.10.2

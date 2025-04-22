@@ -27,14 +27,15 @@ flowchart TD
     EditorialGuideline@{ shape: doc, label: "Editorial guideline" }
     Publish[Publish post]
     End[End]
-    ExistingBlogPosts@{ shape: doc, label: "Existing blog posts" }
+    ExistingBlogPostsTitles@{ shape: doc, label: "Existing blog posts titles" }
+    ExistingBlogPostsTags@{ shape: doc, label: "Existing blog posts tags" }
     TNS@{ shape: text, label: "thenewstack.io/blog/feed"}
     DO@{ shape: text, label: "devops.com/feed"}
-    CNCF@{ shape: text, label: "www.cncf.io/blog/feed"}
+    CNCF@{ shape: text, label: "cncf.io/blog/feed"}
 
     Start ==> Topic
     Topic -.-> EditorialGuideline
-    Topic -. Retrieve post title<br>from file system .-> ExistingBlogPosts
+    Topic -. Retrieve post title<br>from file system .-> ExistingBlogPostsTitles
     Topic ==> Inspiration
     Inspiration -.-> EditorialGuideline
     Inspiration -. Fetch RSS feed .-> TNS
@@ -43,6 +44,7 @@ flowchart TD
     Topic == Generate topic that doesn't<br>overlap with existing posts ==> Post
     Post == Draft post ==> Feedback
     Post -.-> EditorialGuideline
+    Post -. Retrieve existing post tags<br>from file system<br>attempt grouping with existing .-> ExistingBlogPostsTags
     Feedback -.-> EditorialGuideline
     Feedback ==> QualityCondition
     QualityCondition == Yes, format post<br>with metadata ==> Publish
@@ -85,6 +87,16 @@ python main.py
 export MODEL=openai:grok-3-mini-beta
 export OPENAI_API_KEY=your-grok-api-key
 export OPENAI_BASE_URL=https://api.x.ai/v1
+
+python main.py
+```
+
+### DeepSeek
+
+```bash
+export MODEL=openai:deepseek-chat
+export OPENAI_API_KEY=your-deepseek-api-key
+export OPENAI_BASE_URL=https://api.deepseek.com/v1
 
 python main.py
 ```

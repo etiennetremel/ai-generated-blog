@@ -1,5 +1,9 @@
 import os
 import re
+import feedparser
+import frontmatter
+from typing import Any
+from functools import lru_cache
 
 model = os.getenv("MODEL", "openai:gpt-4.1")
 
@@ -15,6 +19,7 @@ def get_sanitized_model():
     return model
 
 
+@lru_cache(maxsize=None)
 def read_file(path):
     with open(path, encoding="utf-8") as f:
         return f.read()
@@ -27,22 +32,76 @@ def slugify(name):
     return filename
 
 
-def get_existing_blog_titles(directory):
-    titles = []
+@lru_cache(maxsize=None)
+def _get_blog_post_metadata(filepath: str) -> Any:
+    """
+    Return blog post metadata from provided filepath
+    """
+    return frontmatter.load(filepath)
+
+
+@lru_cache(maxsize=None)
+def _get_blog_post_paths(directory: str) -> list[str]:
+    """
+    Return list of blog post paths from provided directory
+    """
+    paths = []
+
     for filename in os.listdir(directory):
         if filename == "_index.md":
             continue
 
         filepath = os.path.join(directory, filename)
         if os.path.isfile(filepath):
-            with open(filepath, "r", encoding="utf-8") as f:
-                content = f.read()
-                match = re.search(r"^\+\+\+\n(.*?)\n\+\+\+", content, re.DOTALL)
-                if match:
-                    frontmatter = match.group(1)
-                    title_match = re.search(
-                        r"^title\s*=\s*['\"](.+)['\"]$", frontmatter, re.MULTILINE
-                    )
-                    if title_match:
-                        titles.append(title_match.group(1).strip())
+            paths.append(filepath)
+
+    return paths
+
+
+@lru_cache(maxsize=None)
+def _get_all_metadata_by_key(directory: str, key: str) -> list[str]:
+    """
+    Walk through all files from directory, load frontmatter metadata and return
+    list of merged values
+    """
+    output = []
+    paths = _get_blog_post_paths(directory)
+    for path in paths:
+        metadata = _get_blog_post_metadata(path)
+        if key in metadata:
+            output.append(metadata[key])
+    return output
+
+
+def load_blog_titles(directory: str) -> list[str]:
+    """
+    Return list of titles from all posts located in provided directory
+    """
+    titles = _get_all_metadata_by_key(directory, "title")
+    print("Found blog post title(s)", titles)
+    return titles
+
+
+@lru_cache(maxsize=None)
+def load_blog_tags(directory: str) -> list[str]:
+    """
+    Return list of tags from all posts located in provided directory
+    """
+    tags = []
+    metadata_tags = _get_all_metadata_by_key(directory, "tags")
+    for tag_list in metadata_tags:
+        for tag in tag_list:
+            if tag not in tags:
+                tags.append(tag)
+    print("Found blog post tag(s)", tags)
+    return tags
+
+
+@lru_cache(maxsize=None)
+def load_rss_feed_titles(url: str) -> list[str]:
+    feed = feedparser.parse(url)
+    titles = []
+    for entry in feed.entries:
+        titles.append(entry.title)
+
     return titles

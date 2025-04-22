@@ -1,8 +1,7 @@
-import feedparser
 from typing import Union
 from pydantic import BaseModel
 from pydantic_ai import Agent
-from utils import model, read_file
+from utils import load_rss_feed_titles, model, read_file
 
 instructions = """
 You're a bot that scrapes RSS feeds to find the best inspirational blog post topics.
@@ -36,11 +35,7 @@ inspiration_agent = Agent(
 
 @inspiration_agent.tool_plain
 async def get_titles(url: str) -> list[str]:
-    feed = feedparser.parse(url)
-    titles = []
-    for entry in feed.entries:
-        titles.append(entry.title)
-    return titles
+    return load_rss_feed_titles(url)
 
 
 @inspiration_agent.tool_plain

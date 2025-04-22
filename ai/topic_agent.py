@@ -1,9 +1,7 @@
-import os
-import re
 from typing import Union
 from pydantic import BaseModel
 from pydantic_ai import Agent, RunContext
-from utils import model, read_file
+from utils import model, read_file, load_blog_titles
 from inspiration_agent import inspiration_agent, InspirationFailed
 
 instructions = """
@@ -51,27 +49,7 @@ topic_agent = Agent(
 
 @topic_agent.tool_plain
 async def get_existing_blog_titles(directory: str) -> list[str]:
-    titles = []
-    for filename in os.listdir(directory):
-        if filename == "_index.md":
-            continue
-
-        filepath = os.path.join(directory, filename)
-        if os.path.isfile(filepath):
-            with open(filepath, "r", encoding="utf-8") as f:
-                content = f.read()
-                match = re.search(r"^\+\+\+\n(.*?)\n\+\+\+", content, re.DOTALL)
-                if match:
-                    frontmatter = match.group(1)
-                    title_match = re.search(
-                        r"^title\s*=\s*['\"](.+)['\"]$", frontmatter, re.MULTILINE
-                    )
-                    if title_match:
-                        titles.append(title_match.group(1).strip())
-
-    print("Found existing blog post title(s)", titles)
-
-    return titles
+    return load_blog_titles(directory)
 
 
 @topic_agent.tool_plain

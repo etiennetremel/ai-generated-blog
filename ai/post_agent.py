@@ -1,7 +1,7 @@
 from typing import Union
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
-from utils import model, read_file
+from utils import model, load_blog_tags, read_file
 
 instructions = """
 You are a professional technical content writer for a news-gathering company.
@@ -15,8 +15,16 @@ Your responsibilities:
 - Ensure the content strictly meets all editorial guidelines and aligns with brand tone and voice.
 
 <workflow>
-1. Use the `get_editorial_guideline` tool to get the editorial guideline from `./editorial-guideline.md`.
-2. Create complete, accurate, and high-quality technical blog posts aligned strictly with the editorial guideline, voice, brand, and audience.
+1. Retrieve editorial guidelines using `get_editorial_guideline` tool from `./editorial-guideline.md`.
+2. Write a complete, accurate, high-quality blog post strictly following the retrieved editorial guidelines.
+3. Retrieve all existing tags using the `get_existing_tags` tool from the `../content/posts` directory.
+   - Reuse existing tags if directly relevant to the content.
+   - If no existing tags adequately match the content, create new, precise tags.
+4. Clearly return your response with these exact fields:
+   - title: concise and engaging post title (sentence case).
+   - post: full blog post content in markdown format.
+   - summary: concise summary of the blog post (maximum 35 words).
+   - tags: relevant list of tags for categorizing the post.
 </workflow>
 """
 
@@ -42,3 +50,8 @@ post_agent = Agent(
 @post_agent.tool_plain
 async def get_editorial_guideline(path: str) -> str:
     return read_file(path)
+
+
+@post_agent.tool_plain
+async def get_existing_tags(directory: str) -> list[str]:
+    return load_blog_tags(directory)
