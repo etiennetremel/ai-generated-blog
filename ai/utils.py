@@ -16,6 +16,12 @@ def get_sanitized_model():
     """
     if "grok" in model:
         return model.replace("openai", "xai")
+    if "openai:anthropic/" in model:
+        return model.replace("openai:anthropic/", "anthropic:")
+    if "openai:meta-llama/" in model:
+        return model.replace("openai:meta-llama/", "meta:")
+    if "openai:deepseek/" in model:
+        return model.replace("openai:deepseek/", "deepseek:")
     return model
 
 

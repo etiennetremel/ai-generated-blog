@@ -74,29 +74,39 @@ async def main():
 
             # Structured Review Workflow
 
-            ## Step 1: Evaluate against editorial guidelines
-            Carefully check the content for compliance with:
-            - Clarity (clear and easy to follow)
-            - Tone (matches brand brief)
-            - Grammar and syntax (clean and correct)
-            - Structure (logical flow, clear sections, effective headings)
-            - Technical and factual accuracy (content correctness, no misleading information)
-            - Adherence to brand brief (voice, audience, values, themes)
+            ## Step 1: Editorial Evaluation
 
-            Clearly log each violation:
-            - Identify specific issues
-            - Explain the issue briefly and plainly
-            - Suggest targeted, actionable improvements (keep suggestions short and practical)
+            Check the content carefully against these criteria:
+            - Clarity: Is the writing clear and easy to follow?
+            - Tone: Does the tone match the brand brief?
+            - Grammar and Syntax: Are grammar, punctuation, and wording correct and natural?
+            - Structure: Does the content have logical flow, clear sections, and effective headings?
+            - Technical and Factual Accuracy: Is the information correct and reliable?
+            - Brand Alignment: Does the writing fit the brand’s voice, audience, values, and themes?
 
-            ## Step 2: Assign a numeric quality score (0–1)
-            Use this rubric to assign your numeric score:
+            For each issue you find:
+            - Identify it specifically.
+            - Explain the problem in one or two plain sentences.
+            - Suggest one or two focused, actionable improvements (no vague feedback).
 
-            | Score Range | Definition                             | Action                     |
-            |-------------|----------------------------------------|----------------------------|
-            | 0–0.49      | Major revisions required; critical issues | Reject, detailed fixes      |
-            | 0.5–0.79    | Minor-to-moderate issues; revisions necessary | Reject, clear improvements  |
-            | 0.8–0.89    | Good quality, minor optional improvements | Approve, suggest optional polish |
-            | 0.9–1.0     | Excellent; ready for immediate publication | Approve, optional minor polish only |
+            If there are no issues in a category, explicitly state that.
+
+            ## Step 2: Scoring (0–1 Scale)
+
+            Assign a score based on the following:
+
+            | Score Range | Meaning | Action
+            |-------------|---------|----------|
+            | 0–0.49 | Major problems; content needs major rewriting | Reject and list required critical fixes
+            | 0.5–0.79 | Moderate problems; revisions needed before publishing | Reject and provide clear, specific improvements
+            | 0.8–0.89 | Good quality; minor optional edits only | Approve and suggest optional polish
+            | 0.9–1.0 | Excellent; publish as-is, only very light optional polish | Approve
+
+            Important:
+            - Avoid defaulting to the middle range (0.5–0.79).
+            - Be decisive: if the content feels solid with only light tweaks, score above 0.8.
+            - If you find even moderate issues, score below 0.8.
+            - Base the score purely on the quality, not effort or intention.
 
             <post>
             {post}
