@@ -17,39 +17,50 @@ This repository demonstrate how to use [Pydantic AI][pydantic-ai] with
 The diagram below outlines the end-to-end workflow for generating blog posts.
 
 ```mermaid
-flowchart TD
-    Start[Start]
-    Topic(((Topic Agent)))
-    Inspiration(((Inspiration Agent)))
-    Post(((Post Agent)))
-    Feedback(((Feedback Agent)))
-    QualityCondition{Quality score > 0.8 ?}
-    EditorialGuideline@{ shape: doc, label: "Editorial guideline" }
-    Publish[Publish post]
-    End[End]
-    ExistingBlogPostsTitles@{ shape: doc, label: "Existing blog posts titles" }
-    ExistingBlogPostsTags@{ shape: doc, label: "Existing blog posts tags" }
-    TNS@{ shape: text, label: "thenewstack.io/blog/feed"}
-    DO@{ shape: text, label: "devops.com/feed"}
-    CNCF@{ shape: text, label: "cncf.io/blog/feed"}
+flowchart LR
+    %% Agents
+    subgraph Agents
+        direction TB
+        Writer((("Writer Agent\n[1]")))
+        Editor((("Editor Agent\n[2]")))
+        SEO((("SEO Specialist Agent\n[3]")))
+        TechLead((("Tech Lead Agent\n[4]")))
+    end
 
-    Start ==> Topic
-    Topic -.-> EditorialGuideline
-    Topic -. Retrieve post title<br>from file system .-> ExistingBlogPostsTitles
-    Topic ==> Inspiration
-    Inspiration -.-> EditorialGuideline
-    Inspiration -. Fetch RSS feed .-> TNS
-    Inspiration -. Fetch RSS feed .-> DO
-    Inspiration -. Fetch RSS feed .-> CNCF
-    Topic == Generate topic that doesn't<br>overlap with existing posts ==> Post
-    Post == Draft post ==> Feedback
-    Post -.-> EditorialGuideline
-    Post -. Retrieve existing post tags<br>from file system<br>attempt grouping with existing .-> ExistingBlogPostsTags
-    Feedback -.-> EditorialGuideline
-    Feedback ==> QualityCondition
-    QualityCondition == Yes, format post<br>with metadata ==> Publish
-    QualityCondition -- No, provide feedback and<br>ask to revisit --> Post
-    Publish ==> End
+    %% Director
+    Director(((Director Agent)))
+
+    %% Guidelines and metadata
+    subgraph KnowledgeBase
+        EditorialGuideline[/"Editorial Guidelines"/]
+        ExistingBlogPostsTitles[/"Existing Blog Post Titles"/]
+        ExistingBlogPostsTags[/"Existing Blog Post Tags"/]
+    end
+
+    %% RSS feeds
+    subgraph RSS_Feeds ["RSS Feeds"]
+        TNS[/"thenewstack.io"/]
+        CNCF[/"cncf.io"/]
+        DO[/"devops.com"/]
+    end
+
+    %% Data access
+    Director -.-> EditorialGuideline
+    Writer -.-> EditorialGuideline
+    Editor -.-> EditorialGuideline
+    SEO -.-> EditorialGuideline
+    TechLead -.-> EditorialGuideline
+
+    Director ==> Writer
+    Director ==> Editor
+    Director ==> SEO
+    Director ==> TechLead
+
+    Director -. Get titles .-> ExistingBlogPostsTitles
+    Director -. Get tags .-> ExistingBlogPostsTags
+    Director -. Fetch feed .-> TNS
+    Director -. Fetch feed .-> CNCF
+    Director -. Fetch feed .-> DO
 ```
 
 ## Generating blog posts
