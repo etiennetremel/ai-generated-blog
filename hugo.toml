@@ -1,4 +1,4 @@
-baseURL = 'https://blog.kogusenn.com/'
+baseURL = 'https://ai-generated-blog.lab.e10n.me/'
 languageCode = 'en-us'
 title = 'AI-generated blog'
 theme = 'default'
