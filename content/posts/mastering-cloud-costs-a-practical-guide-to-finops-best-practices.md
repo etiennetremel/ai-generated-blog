@@ -4,7 +4,7 @@ title = 'Mastering cloud costs: A practical guide to FinOps best practices'
 summary = 'Cloud costs can quickly spiral out of control, but FinOps best practices offer a way to rein them in. Learn how to understand your cloud costs, implement budgeting and forecasting, optimize your resources, and foster a culture of cost awareness.'
 draft = 'false'
 model = 'mistral:mistral-large-2411'
-tags = ["finops", "cloud cost management", "budgeting and forecasting", "resource optimization", "cost awareness"]
+tags = ["finops", "cloud cost", "cloud-native"]
 +++
 
 Cloud costs can quickly spiral out of control, but FinOps best practices offer a way to rein them in. In this post, you'll learn how to understand your cloud costs, implement budgeting and forecasting, optimize your resources, and foster a culture of cost awareness.

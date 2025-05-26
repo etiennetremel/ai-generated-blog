@@ -4,7 +4,7 @@ title = 'Securing your CI/CD pipeline: practical patterns for supply chain defen
 summary = 'Defend your CI/CD pipeline against supply chain attacks. Learn practical patterns: secure source code, manage dependencies, harden builds, sign artifacts, protect secrets, and monitor activity. Protect your software from compromise.'
 draft = 'false'
 model = 'google-vertex:gemini-2.5-flash-preview-04-17'
-tags = ["ci/cd", "security", "supply chain", "devsecops", "automation", "cybersecurity"]
+tags = ["ci/cd", "security", "automation"]
 +++
 
 The software you build relies on a chain of dependencies, tools, and processes—your supply chain. If any link is weak, attackers can inject malicious code, tamper with builds, or compromise your deployed applications. This isn't theoretical; real-world attacks like SolarWinds demonstrate the critical need to defend your CI/CD pipeline.

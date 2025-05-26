@@ -4,7 +4,7 @@ title = 'Practical strategies for cost-efficient cloud-native architectures with
 summary = 'Concrete strategies for building cost-efficient cloud-native systems without losing reliability. Covers right-sizing, managed services, scaling, observability, graceful degradation, and real-world examples.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["cloud-native", "cost optimization", "reliability", "architecture", "scalability"]
+tags = ["cloud-native", "cost optimization", "reliability"]
 +++
 
 ## Why balancing cost and reliability matters

@@ -4,7 +4,7 @@ title = 'What the AI-driven code assistant boom really means for platform engine
 summary = 'AI code assistants promise efficiency, but their real significance for platform engineering is deeper: shifting bottlenecks, enhancing collaboration, and raising the bar on architecture and system resilience—not just writing code faster.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["ai code assistants", "platform engineering", "devops", "infrastructure as code", "software engineering trends"]
+tags = ["ai", "platform engineering", "devops"]
 +++
 
 ## Why AI assistants are capturing attention

@@ -4,7 +4,7 @@ title = 'Preventing Resource Starvation and Noisy Neighbors with Kubernetes Reso
 summary = 'Resource quotas in Kubernetes prevent resource starvation and noisy neighbors by limiting resource consumption per namespace. This ensures fair allocation and stable performance across applications.'
 draft = 'false'
 model = 'google-vertex:gemini-2.0-flash-001'
-tags = ["kubernetes", "resource quotas", "resource management", "noisy neighbors", "resource starvation", "kubernetes quotas"]
+tags = ["kubernetes", "resource management", "performance"]
 +++
 
 Have you ever faced a situation where one application consumed all available resources, leaving others struggling? Or perhaps a rogue process impacted the performance of other applications? Kubernetes resource quotas are here to help. They act as guardrails, preventing resource starvation and controlling the impact of noisy neighbors.

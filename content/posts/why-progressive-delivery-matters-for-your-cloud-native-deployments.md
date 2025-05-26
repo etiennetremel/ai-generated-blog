@@ -4,7 +4,7 @@ title = 'Why progressive delivery matters for your cloud-native deployments'
 summary = 'Progressive delivery minimizes risks in cloud-native deployments by rolling out updates gradually. Learn why it matters, how it reduces errors, and its real-world benefits for safer, faster releases.'
 draft = 'false'
 model = 'xai:grok-3'
-tags = ["progressive delivery", "cloud-native", "deployment strategies", "canary releases", "microservices"]
+tags = ["cloud-native", "progressive delivery", "deployment"]
 +++
 
 If you're managing cloud-native deployments, downtime or buggy releases can tank your user experience. Progressive delivery offers a smarter way to roll out updates. In this post, you'll learn what it is, why it matters, and how it can save your deployments from disaster.

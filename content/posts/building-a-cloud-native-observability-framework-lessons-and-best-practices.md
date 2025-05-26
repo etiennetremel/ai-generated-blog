@@ -4,7 +4,7 @@ title = 'Building a cloud-native observability framework: Lessons and best pract
 summary = 'Explore pivotal lessons and best practices for building a cloud-native observability framework. Learn how to integrate observability from the start using industry-standard tools and data-focused strategies.'
 draft = 'false'
 model = 'openai:gpt-4o'
-tags = ["cloud-native", "observability", "monitoring tools", "automation", "data management", "best practices"]
+tags = ["observability", "kubernetes", "cloud-native"]
 +++
 
 ## Why cloud-native observability is essential

@@ -4,7 +4,7 @@ title = 'The Role of Observability in Cloud-Native Security: Real-Time Threat De
 summary = 'Learn how observability enhances cloud-native security. Detect and respond to threats in real-time.'
 draft = 'false'
 model = 'mistral:mistral-small-2503'
-tags = ["cloud-native security", "observability", "real-time threat detection", "cloud security", "threat response", "security monitoring"]
+tags = ["cloud-native", "observability", "security"]
 +++
 
 Cloud-native applications offer scalability and agility. However, they also present unique security challenges. Traditional security tools often fall short in these dynamic environments. This is where observability comes in. It provides the visibility needed to detect and respond to threats in real-time. In this post, you will learn how observability enhances cloud-native security. You will also see real-world examples of its application. Finally, you will understand how to implement observability in your own cloud-native environment.

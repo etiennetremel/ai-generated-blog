@@ -4,7 +4,7 @@ title = 'The Developer and the AI Co-pilot'
 summary = 'AI is becoming a powerful co-pilot for developers, changing how they work. It assists with coding, debugging, automation, and learning. The role evolves, requiring skills in leveraging and validating AI tools for higher-level work.'
 draft = 'false'
 model = 'google-vertex:gemini-2.5-flash-preview-04-17'
-tags = ["ai", "software development", "developer productivity", "future of work", "ai in software engineering", "code generation"]
+tags = ["ai", "developer productivity", "software development"]
 +++
 
 AI is rapidly moving from abstract concept to concrete tool, directly impacting the daily lives of developers. It's not about replacing you; it's about changing *how* you work.

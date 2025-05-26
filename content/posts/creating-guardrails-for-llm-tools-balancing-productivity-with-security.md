@@ -4,7 +4,7 @@ title = 'Creating guardrails for LLM tools: Balancing productivity with security
 summary = 'Implement effective guardrails for LLM tools in your developer stack to enhance productivity while maintaining security, with practical strategies for risk assessment, access control, data protection, and continuous monitoring.'
 draft = 'false'
 model = 'anthropic:claude-3.7-sonnet'
-tags = ["security", "ai", "developer productivity", "llm", "cloud-native security", "best practices"]
+tags = ["security", "ai", "cloud-native"]
 +++
 
 Large Language Models (LLMs) have rapidly transformed developer workflows, offering unprecedented productivity gains through code generation, documentation assistance, and automated testing. However, as more development teams integrate these powerful AI tools into their stacks, organizations face a critical balancing act: maximizing developer productivity while maintaining robust security postures.

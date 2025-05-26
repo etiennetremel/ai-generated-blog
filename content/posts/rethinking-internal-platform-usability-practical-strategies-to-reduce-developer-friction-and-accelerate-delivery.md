@@ -4,7 +4,7 @@ title = 'Rethinking internal platform usability: practical strategies to reduce 
 summary = 'Explore actionable strategies to make internal platforms more usable, reducing developer friction and boosting delivery speed. Learn how feedback, documentation, consistency, and self-service drive meaningful improvements.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["internal developer platforms", "developer experience", "platform engineering", "developer productivity", "best practices"]
+tags = ["platform engineering", "developer experience", "internal developer platform"]
 +++
 
 

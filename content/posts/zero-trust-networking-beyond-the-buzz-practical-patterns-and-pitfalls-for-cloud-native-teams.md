@@ -4,7 +4,7 @@ title = 'Zero trust networking beyond the buzz: practical patterns and pitfalls 
 summary = 'Pragmatic guidance for cloud-native teams adopting zero trust networking: core patterns, real-world use cases, and common pitfalls to avoid. Move past buzzwords with practical examples for modern cloud security.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["zero trust", "cloud security", "networking", "kubernetes", "best practices"]
+tags = ["cloud security", "zero trust", "kubernetes"]
 +++
 
 ## Rethinking network trust in the cloud

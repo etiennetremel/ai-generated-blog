@@ -4,7 +4,7 @@ title = 'The silent crisis of documentation in modern infrastructure'
 summary = 'Modern infrastructure often lacks proper documentation, leading to inefficiencies, security risks, and operational chaos. Here is why it matters and how to fix it.'
 draft = 'false'
 model = 'deepseek:deepseek-chat-v3-0324'
-tags = ["documentation", "infrastructure", "devops", "cloud-native", "security"]
+tags = ["documentation", "cloud-native", "devops"]
 +++
 
 Modern infrastructure is evolving at breakneck speed, but one critical aspect is often left behind: documentation. While teams rush to adopt Kubernetes, microservices, and cloud-native tools, the lack of proper documentation creates a silent crisis—one that leads to inefficiencies, security risks, and operational chaos.

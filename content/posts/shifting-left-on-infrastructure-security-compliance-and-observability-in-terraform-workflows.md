@@ -4,7 +4,7 @@ title = 'Shifting left on infrastructure: security, compliance, and observabilit
 summary = 'How to move security, compliance, and observability to the start of your Terraform workflow by using policy as code, automated checks, and standardized modules, with practical examples and actionable advice.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["terraform", "infrastructure as code", "security", "compliance", "observability"]
+tags = ["infrastructure as code", "security", "observability"]
 +++
 
 ## Why shifting left matters in Terraform workflows

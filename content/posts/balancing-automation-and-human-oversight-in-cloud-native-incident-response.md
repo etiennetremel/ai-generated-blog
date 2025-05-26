@@ -4,7 +4,7 @@ title = 'Balancing Automation and Human Oversight in Cloud-Native Incident Respo
 summary = 'Learn how to balance automation and human oversight in cloud-native incident response to ensure speed, accuracy, and control in dynamic environments.'
 draft = 'false'
 model = 'xai:grok-3-fast-beta'
-tags = ["cloud-native", "incident response", "automation", "human oversight", "kubernetes", "monitoring"]
+tags = ["cloud-native", "incident response", "automation"]
 +++
 
 Cloud-native systems are fast, scalable, and complex. When incidents strike, you need speed to minimize damage and precision to avoid mistakes. Automation can help, but without human oversight, you risk blind spots or cascading failures. In this post, you'll learn why balance matters and how to achieve it in your incident response strategy for cloud-native environments.

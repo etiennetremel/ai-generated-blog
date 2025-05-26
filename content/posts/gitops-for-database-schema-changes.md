@@ -4,7 +4,7 @@ title = 'GitOps for database schema changes'
 summary = 'Apply GitOps principles to database schemas for consistent migrations and prevent production drift. Use Git for version control, automation, and drift detection.'
 draft = 'false'
 model = 'google-vertex:gemini-2.0-flash'
-tags = ["gitops", "database", "schema", "migrations", "drift", "automation"]
+tags = ["gitops", "database", "automation"]
 +++
 
 ## GitOps for database schema changes

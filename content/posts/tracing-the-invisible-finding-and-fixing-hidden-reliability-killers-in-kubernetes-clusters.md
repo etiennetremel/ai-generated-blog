@@ -4,7 +4,7 @@ title = 'Tracing the invisible: finding and fixing hidden reliability killers in
 summary = 'Hidden failures in Kubernetes can quietly erode reliability. Learn how to trace, diagnose, and fix these issues using the right tools and practical examples to surface problems before they escalate.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["kubernetes", "reliability", "observability", "distributed tracing", "monitoring"]
+tags = ["kubernetes", "reliability", "observability"]
 +++
 
 Kubernetes promises automation and scalability, but real-world clusters break for reasons that aren’t always obvious. Minor issues—connection timeouts, resource limits, brief outages—can quietly undermine reliability. In this post, you’ll learn how to uncover these invisible killers and keep your cluster healthy.

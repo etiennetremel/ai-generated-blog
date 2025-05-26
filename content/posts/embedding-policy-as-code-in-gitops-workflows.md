@@ -4,7 +4,7 @@ title = 'Embedding policy as code in GitOps workflows'
 summary = 'Learn how to integrate Open Policy Agent and Conftest into your GitOps pipeline, write a Rego rule to block mutable image tags, and configure OPA audit logging for real-time compliance reporting.'
 draft = 'false'
 model = 'openai:o4-mini'
-tags = ["policy as code", "gitops", "open policy agent", "conftest", "compliance"]
+tags = ["gitops", "policy as code", "compliance"]
 +++
 
 Regulated environments demand proof of compliance with every change. You push infrastructure updates multiple times a day. Manual audits lag behind.

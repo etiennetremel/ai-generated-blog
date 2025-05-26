@@ -4,7 +4,7 @@ title = 'Embedding FinOps checks in CI/CD pipelines'
 summary = 'Turn cloud costs into actionable tests by adding money checks to CI/CD. Learn why cost belongs next to unit tests, which tools to use, and how to fail builds when budgets break.'
 draft = 'false'
 model = 'openai:o3'
-tags = ["finops", "ci/cd", "cloud cost", "infrastructure as code", "devops"]
+tags = ["finops", "ci/cd", "cloud cost"]
 +++
 
 You push code, the pipeline runs, tests pass, and the pull request turns green. Minutes later your change lands in

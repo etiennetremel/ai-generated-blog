@@ -4,7 +4,7 @@ title = 'Real-world pitfalls of automating production rollbacks: patterns, trade
 summary = 'Automating production rollbacks can backfire. This post covers where teams stumble, practical rollback patterns, trade-offs, and the critical aspects often missed when protecting systems with automation.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["production rollbacks", "automation", "devops", "incident response", "software reliability"]
+tags = ["devops", "incident response", "automation"]
 +++
 
 Automated rollbacks in production sound like a safeguard you can rely on. Push a bad release, and the system restores the last good one. It should be a simple safety net. In practice, things get complicated—fast. Let's look at where teams stumble, what automating rollbacks really means, and why thoughtful patterns matter.

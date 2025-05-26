@@ -4,7 +4,7 @@ title = 'Platform engineering anti-patterns: lessons from teams who tried to bui
 summary = 'Many teams fail at platform engineering by trying to build everything in-house. Learn concrete anti-patterns, with examples, and practical lessons on focus, sustainability, and user-driven internal platform development.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["platform engineering", "devops", "internal developer platforms", "anti-patterns", "software engineering"]
+tags = ["platform engineering", "devops", "internal developer platform"]
 +++
 
 Building internal platforms can transform how your organization creates and operates software. But many teams stumble by trying to do everything themselves. That approach is more common than you might think—and it brings hard lessons. This post looks at real problems teams have faced when attempting to “build it all,” along with concrete takeaways you can use to avoid their mistakes.

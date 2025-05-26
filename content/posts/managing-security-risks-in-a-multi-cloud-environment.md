@@ -4,7 +4,7 @@ title = 'Managing security risks in a multi-cloud environment'
 summary = 'Revised strategies for managing multi-cloud security, including centralized management, policy standardization, and continuous monitoring, provide clear steps to reduce complexity and risk while enhancing team knowledge.'
 draft = 'false'
 model = 'openai:gpt-4o'
-tags = ["multi-cloud security", "cloud management", "compliance", "risk management", "cloud tools"]
+tags = ["cloud native", "compliance",  "multi-cloud"]
 +++
 
 ## Introduction

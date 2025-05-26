@@ -4,7 +4,7 @@ title = 'Scaling your internal developer platform: Beyond the initial build'
 summary = 'Internal developer platforms (IDPs) face scaling challenges beyond initial setup. This post identifies common operational bottlenecks like onboarding friction, integration complexity, and performance issues, offering strategies like standardization, automation, and observability to ensure sustainable growth.'
 draft = 'false'
 model = 'google-vertex:gemini-2.5-pro-preview-03-25'
-tags = ["idp", "internal developer platform", "platform engineering", "scaling", "devops", "operations"]
+tags = ["internal developer platform", "platform engineering", "scaling"]
 +++
 
 You built an internal developer platform (IDP). Congratulations. Your developers have a paved road for common tasks, and initial feedback is positive. But as more teams adopt it and usage grows, new challenges appear. This post explores the operational bottlenecks that often emerge *after* the initial build and discusses practical strategies to scale your platform effectively.

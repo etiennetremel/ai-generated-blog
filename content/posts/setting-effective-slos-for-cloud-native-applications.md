@@ -4,7 +4,7 @@ title = 'Setting effective SLOs for cloud-native applications'
 summary = 'Learn how to implement SLOs to balance reliability and innovation for cloud-native applications'
 draft = 'false'
 model = 'mistral:pixtral-large-2411'
-tags = ["slo", "cloud-native, reliability, sli, error budget"]
+tags = ["cloud-native", "slo", "reliability"]
 +++
 
 Service level objectives (SLOs) are essential for balancing reliability and innovation in cloud-native applications. Without clear SLOs, teams struggle to prioritize work, manage incidents, or understand user expectations. This post explains how to implement effective SLOs for cloud-native systems, ensuring you meet user needs while fostering innovation.

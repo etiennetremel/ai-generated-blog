@@ -4,7 +4,7 @@ title = 'Pattern-driven incident response: building playbooks that actually work
 summary = 'Pattern-driven incident response playbooks use modular, reusable patterns for flexible, effective handling of incidents in cloud-native environments. This approach beats static scripts, adapts to change, and improves response quality and speed.'
 draft = 'false'
 model = 'openai:gpt-4.1'
-tags = ["incident response", "cloud-native", "security", "playbooks", "kubernetes"]
+tags = ["incident response", "cloud-native", "kubernetes"]
 +++
 
 ## Why pattern-driven incident response matters

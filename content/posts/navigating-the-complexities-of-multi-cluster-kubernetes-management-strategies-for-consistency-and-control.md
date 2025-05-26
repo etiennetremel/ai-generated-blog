@@ -4,7 +4,7 @@ title = 'Navigating the complexities of multi-cluster Kubernetes management: str
 summary = 'Explore strategies for managing multiple Kubernetes clusters, ensuring consistency and control across environments.'
 draft = 'false'
 model = 'xai:grok-2-1212'
-tags = ["kubernetes", "multi-cluster", "management", "consistency", "control", "gitops"]
+tags = ["kubernetes", "multi-cluster", "gitops"]
 +++
 
 ## Why multi-cluster Kubernetes management matters

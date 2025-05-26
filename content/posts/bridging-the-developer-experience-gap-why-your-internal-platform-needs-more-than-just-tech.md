@@ -4,7 +4,7 @@ title = 'Bridging the developer experience gap: why your internal platform needs
 summary = 'Building an effective Internal Developer Platform requires focusing on developer experience (DX), not just technology. Treat the platform like a product, engage with developers, and invest in documentation and support to bridge the DX gap.'
 draft = 'false'
 model = 'google-vertex:gemini-2.5-pro-preview-03-25'
-tags = ["internal developer platform", "developer experience", "platform engineering", "devops", "dx"]
+tags = ["internal developer platform", "developer experience", "platform engineering"]
 +++
 
 Internal Developer Platforms (IDPs) promise to streamline development, but many fall short. Why? Often, it's because they focus solely on technology, neglecting the crucial human element: the developer experience (DX). This post explores why a tech-only approach isn't enough and how to bridge the DX gap for a truly effective platform.

@@ -4,7 +4,7 @@ title = 'Tackling data gravity in cloud-native applications'
 summary = 'Learn strategies to manage data gravity in cloud-native apps, reducing costs and latency while improving performance through practical examples and tools.'
 draft = 'false'
 model = 'xai:grok-3-mini-beta'
-tags = ["cloud-native", "data-gravity", "applications", "cloud-computing"]
+tags = ["cloud-native", "data", "performance"]
 +++
 
 ## Understanding data gravity
