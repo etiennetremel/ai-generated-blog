@@ -1,19 +1,22 @@
 # Editorial guideline
 
 ## Brand identity
-- Voice: Authoritative yet conversational; professional but accessible
-- Tone: Insightful, analytical, practical, unbiased, and occasionally provocative
-- Values: Accuracy, relevance, innovation, transparency, objectivity
+
+- Voice: Technical, pragmatic, and hands-on.
+- Tone: Clear, concise, and focused on practical implementation.
+- Values: Simplicity, community-focused, open-source, security, and effective use of existing tools.
 
 ## Audience
-- Technology professionals, engineers, developers, architects, DevOps/SREs, security practitioners, platform engineers, and technology leaders.
-- Decision-makers interested in emerging technologies, modern infrastructure, software engineering, cloud-native practices, and industry trends.
+
+Technology professionals, engineers, developers, architects, DevOps/SREs,
+security practitioners, platform engineers, and technology leaders.
 
 ## Writing goals
-- Clearly communicate complex tech concepts in simple language.
-- Offer valuable insights that readers can immediately apply or consider.
-- Encourage informed conversations and engagement within the tech community.
-- Provide thoughtful analysis and practical examples over hype or superficial coverage.
+
+- Explain complex technical concepts in straightforward language.
+- Provide actionable insights and code examples.
+- Demonstrate the integration of tools and technologies in real-world scenarios.
+- Encourage experimentation and learning through shared experiences.
 
 ## Content themes
 - Cloud-native infrastructure and Kubernetes ecosystems
@@ -24,44 +27,52 @@
 - Cloud security trends, vulnerabilities, and best practices
 - Emerging tech (AI/ML, Edge Computing, Serverless, Wasm, etc.)
 - FinOps, cost optimization, resource efficiency
-- Software engineering culture, productivity, collaboration tools, remote work insights
+- Platform and software engineering culture through productivity and collaborative tools
 
-##  Writing criteria
-- ✅ Assume your reader is technical and curious, but not necessarily an expert.
-- ✅ Open with a short, strong intro explaining why the topic matters and what readers will learn.
-- ✅ Write like a practitioner speaking to fellow practitioners.
-- ✅ Use plain, simple, everyday language; clearly explain any necessary jargon.
-- ✅ Be specific, concise, and clear. Remove fluff.
-- ✅ Use active voice.
+## Writing criteria
+
 - ✅ Address readers directly ("you," "your").
 - ✅ Vary sentence length deliberately for natural rhythm (short sentences for emphasis, longer ones for complex ideas).
-- ✅ Maintain a conversational tone (avoid robotic or overly formal).
-- ✅ Ensure factual and technical accuracy.
-- ✅ Cite credible sources, standards, or tools to back up your claims.
-- ✅ When showing code or tools, explain why something is done, not just how.
+- ✅ Be specific, concise, and clear. Remove fluff.
+- ✅ Assume the reader has a technical background but may be new to the specific tools or concepts discussed.
+- ✅ Begin with a brief introduction outlining the problem and the proposed solution.
+- ✅ Use plain language and define acronyms or specialized terms upon first use.
 - ✅ Use markdown formatting consistently:
-    - Inline code formatting for short snippets or commands.
-    - Labeled code blocks for longer code examples.
-    - Italics for emphasis (avoid bold, except for labels like "Pros"/"Cons").
-    - Use markdown headers (sentence case) to clearly structure ideas.
+    - ✅ Labeled code blocks for longer code examples.
+    - ✅ Italics for emphasis (avoid bold, except for labels like "Pros"/"Cons").
+    - ✅ Use markdown headers (sentence case) to clearly structure ideas.
+    - ✅ The blog post title must not be included in the content
+    - ✅ Limit all lines to a maximum of 80 characters to enhance readability and maintain consistency across documents.
+- ✅ Include diagrams to support complex explanations when appropriate (e.g., CI/CD pipelines, architecture diagrams).
+    - ✅ Use only Mermaid or GoAT (ASCII) formats compatible with Hugo's content rendering.
+    - ✅ Enclose diagram code within fenced code blocks, specifying the appropriate language identifier (mermaid or goat).
+- ✅ Maintain a logical flow, guiding the reader through the setup, implementation, and results.
+- ✅ Highlight potential pitfalls and how to avoid them.
+- ✅ When showing code or tools, explain why something is done, not just how.
+- ✅ Cite credible sources, standards, or tools to back up your claims.
+- ✅ Ensure factual and technical accuracy.
+- ✅ Conclude with a summary of outcomes and possible next steps or improvements.
 - ✅ Include real-world concrete examples or practical use cases.
-- ✅ Limit line length to 120 characters.
 - ✅ Follow the provided brand voice and tone guidelines.
 - ✅ If you don't know something, admit it—never guess or fabricate information.
 - ✅ Use sentence case for headings and post titles ("This is a title").
+- ❌ Avoid unnecessary jargon or overly complex language.
 - ❌ Avoid filler phrases, wordiness, vague language, or repetition.
 - ❌ Avoid overly formal or uncommon words (e.g., "delve," "notwithstanding").
-- ❌ Don’t write tutorials or how-to content unless explicitly requested.
-- ❌ Don’t use generic intros or conclusions.
-- ❌ Don’t use unnatural phrasing or keyword stuffing.
 - ❌ Avoid hype, clichés, marketing speak, or buzzwords.
 - ❌ Avoid AI giveaways (robotic phrases, overly generic definitions).
-- ❌ Avoid headings structured as "Something: Definition..."
+- ❌ Avoid bullet-point and headings structured as key/value, e.g. "Something: Definition..."
 - ❌ Avoid trailing participial phrases (", allowing...", ", making it easier..."); rewrite these clearly into full clauses.
-- ❌ Don’t overuse conditional language ("could," "might," "may") if confidence is possible.
 - ❌ Avoid semicolons, emojis, hashtags, or stylized punctuation.
 - ❌ Avoid em dashes for dramatic effect; instead use commas, periods, or parentheses.
 - ❌ Avoid excessive capitalization or acronyms without definition.
-- ❌ Don’t use formulaic transitions (e.g., "In today's rapidly evolving landscape...").
 - ❌ Avoid overused setups (e.g., "Let's dive deep into...").
-- ❌ Don’t use empty intensifiers (e.g., "incredibly important").
+- ❌ Do not assume the reader has prior knowledge of the author's previous work or projects.
+- ❌ Do not provide code snippets
+- ❌ Don't write tutorials or how-to content unless explicitly requested.
+- ❌ Don't use generic intros or conclusions.
+- ❌ Don't use unnatural phrasing or keyword stuffing.
+- ❌ Don't use formulaic transitions (e.g., "In today's rapidly evolving landscape...").
+- ❌ Don't use empty intensifiers (e.g., "incredibly important").
+- ❌ Don't overuse conditional language ("could," "might," "may") if confidence is possible.
+- ❌ Refrain from using marketing language or making unsubstantiated claims.

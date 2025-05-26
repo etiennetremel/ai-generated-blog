@@ -12,16 +12,21 @@ def get_sanitized_model():
     """
     Return correct model based on Pydantic configuration
     In the case of Grok, the xAI API is compatible with the OpenAI API which
-    Pydantic is using. so openai:grok-3 would become xai:grok-3
+    Pydantic is using. so openai:grok-3 would become xai:grok-3.
+    Similarly, if using OpenRouter, strip the openrouter: from the model name.
     """
+
+    # OpenRouter
+    if "/" in model:
+        s = model
+        if "meta-llama/" in s:
+            s = model.replace("meta-llama", "meta")
+        return model[model.find(":") + 1 :].replace("/", ":")
+
+    # Grok
     if "grok" in model:
         return model.replace("openai", "xai")
-    if "openai:anthropic/" in model:
-        return model.replace("openai:anthropic/", "anthropic:")
-    if "openai:meta-llama/" in model:
-        return model.replace("openai:meta-llama/", "meta:")
-    if "openai:deepseek/" in model:
-        return model.replace("openai:deepseek/", "deepseek:")
+
     return model
 
 
@@ -84,7 +89,6 @@ def load_blog_titles(directory: str) -> list[str]:
     Return list of titles from all posts located in provided directory
     """
     titles = _get_all_metadata_by_key(directory, "title")
-    print("Found blog post title(s)", titles)
     return titles
 
 
@@ -99,7 +103,6 @@ def load_blog_tags(directory: str) -> list[str]:
         for tag in tag_list:
             if tag not in tags:
                 tags.append(tag)
-    print("Found blog post tag(s)", tags)
     return tags
 
 

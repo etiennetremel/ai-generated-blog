@@ -101,6 +101,16 @@ export OPENAI_BASE_URL=https://api.deepseek.com/v1
 python main.py
 ```
 
+### OpenRouter
+
+```bash
+export MODEL=openrouter:meta-llama/llama-4-maverick
+export OPENAI_API_KEY=your-openrouter-api-key
+export OPENAI_BASE_URL=https://openrouter.ai/api/v1
+
+python main.py
+```
+
 ## Running Hugo
 
 ```bash
