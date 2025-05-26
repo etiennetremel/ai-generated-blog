@@ -21,17 +21,17 @@ flowchart LR
     %% Agents
     subgraph Agents
         direction TB
-        Writer((("Writer Agent\n[1]")))
-        Editor((("Editor Agent\n[2]")))
-        SEO((("SEO Specialist Agent\n[3]")))
-        TechLead((("Tech Lead Agent\n[4]")))
+        Writer((("Writer Agent<br>[1]")))
+        Editor((("Editor Agent<br>[2]")))
+        SEO((("SEO Specialist Agent<br>[3]")))
+        TechLead((("Tech Lead Agent<br>[4]")))
     end
 
     %% Director
     Director(((Director Agent)))
 
     %% Guidelines and metadata
-    subgraph KnowledgeBase
+    subgraph Knowledge_Base ["Knowledge Base"]
         EditorialGuideline[/"Editorial Guidelines"/]
         ExistingBlogPostsTitles[/"Existing Blog Post Titles"/]
         ExistingBlogPostsTags[/"Existing Blog Post Tags"/]
