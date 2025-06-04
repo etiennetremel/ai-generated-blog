@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logfire
 import os
 import textwrap
 from datetime import datetime, timezone
@@ -7,6 +8,16 @@ from pydantic_ai.usage import Usage, UsageLimits
 from pydantic_ai import UnexpectedModelBehavior, capture_run_messages
 from utils import slugify, get_sanitized_model
 from director_agent import director_agent
+
+
+traces_endpoint = "http://localhost:4318/v1/traces"
+os.environ["OTEL_EXPORTER_OTLP_TRACES_ENDPOINT"] = traces_endpoint
+
+logfire.configure(
+    service_name="ai-generated-blog",
+    send_to_logfire=False,
+)
+logfire.instrument_pydantic_ai()
 
 
 async def main():
@@ -20,11 +31,6 @@ async def main():
         - Use the provided editorial guidelines.
         - The audience is technical professionals.
         - Oversee all steps: content writing, editing, SEO, and technical review.
-        - Return only the final output in the following format:
-            - Title: string
-            - Content: string (markdown)
-            - Tags: list(string) (max 3 tags)
-            - Summary: string (max 35 words)
         """
     )
 

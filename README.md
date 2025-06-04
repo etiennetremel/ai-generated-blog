@@ -68,10 +68,36 @@ flowchart LR
 To generate a new blog post, choose a model and execute the commands below from
 the `./ai/` directory.
 
+Tracing is handled by [logfire][logfire] using [Grafana][grafana],
+[Tempo][tempo], [Prometheus][prometheus].
+
+Prior to generating posts, deploy the observability stack using [Podman
+Compose][podman-compose] (alternatively, use [Docker Compose][docker-compose]):
+
+```bash
+# to start the observability stack
+podman compose up -d ./ai/observability/
+
+# generate a post
+export OPENAI_API_KEY=your-api-key
+export MODEL=openai:gpt-4.1
+pip install -r requirements.txt
+python main.py
+
+# stop the observability stack when you are done
+podman compose down -v ./ai/observability/
+```
+
+Use Grafana to see the Traces at http://localhost:3000:
+
+![Traces](./grafana-traces-logfire.png)
+
+### Models
+
 Refer to the [Pydantic AI models documentation][pydantic-models] for
 instructions to use other models.
 
-### OpenAI
+#### OpenAI
 
 ```bash
 export OPENAI_API_KEY=your-api-key
@@ -80,7 +106,7 @@ export MODEL=openai:gpt-4.1
 python main.py
 ```
 
-### Google Gemini
+#### Google Gemini
 
 ```bash
 # login using GCloud CLI
@@ -92,7 +118,7 @@ export MODEL=google-vertex:gemini-2.5-pro-preview-03-25
 python main.py
 ```
 
-### xAI Grok
+#### xAI Grok
 
 ```bash
 export MODEL=openai:grok-3-mini-beta
@@ -102,7 +128,7 @@ export OPENAI_BASE_URL=https://api.x.ai/v1
 python main.py
 ```
 
-### DeepSeek
+#### DeepSeek
 
 ```bash
 export MODEL=openai:deepseek-chat
@@ -112,7 +138,7 @@ export OPENAI_BASE_URL=https://api.deepseek.com/v1
 python main.py
 ```
 
-### OpenRouter
+#### OpenRouter
 
 ```bash
 export MODEL=openrouter:meta-llama/llama-4-maverick
@@ -131,6 +157,12 @@ hugo server
 Access the website locally at http://localhost:1313.
 
 <!-- links -->
+[docker-compose]: https://docs.docker.com/compose/
+[grafana]: https://grafana.com
 [hugo]: https://gohugo.io
+[logfire]: https://pydantic.dev/logfire
+[podman-compose]: https://github.com/containers/podman-compose
+[prometheus]: https://prometheus.io/
 [pydantic-ai]: https://ai.pydantic.dev
 [pydantic-models]: https://ai.pydantic.dev/models/
+[tempo]: https://grafana.com/docs/tempo/latest/

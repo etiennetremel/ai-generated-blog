@@ -52,11 +52,6 @@ include:
 - Use get_existing_titles to check for uniqueness before finalizing.
 - Use get_existing_tags to check if a similar tag already exist and use it
   otherwise come up with your own more relevant tags before finalizing.
-- Output format must be:
-    - Title: string (unique, high quality, ≤ 120 characters)
-    - Content: markdown-formatted blog post (≤ 120 characters per line)
-    - Tags: list of up to 3 relevant tags
-    - Summary: concise, compelling overview (≤ 35 words)
 - Do NOT include any explanations or extra text.
 - Only deliver the final, fully reviewed and edited post.
 - Rigorously monitor compliance, clarity, technical correctness, and
@@ -89,14 +84,23 @@ async def get_existing_tags() -> list[str]:
 
 @director_agent.tool_plain
 async def get_rss_feed_titles(url: str) -> list[str]:
-    """Retrieve a list of blog post titles from a given RSS feed URL"""
+    """Retrieve a list of blog post titles from a given RSS feed URL
+
+    Args:
+        url: The RSS feed URL
+    """
     print(f"Calling get_rss_feed_titles {url}")
     return load_rss_feed_titles(url)
 
 
 @director_agent.tool(retries=3)
 async def writer(ctx: RunContext[None], topic: str) -> Post:
-    """A professional technical content writer"""
+    """A professional technical content writer
+
+    Args:
+        ctx: The context
+        topic: The topic/title to draft content about
+    """
     print("Calling Writer")
     result = await writer_agent.run(
         textwrap.dedent(
@@ -110,11 +114,6 @@ async def writer(ctx: RunContext[None], topic: str) -> Post:
             - Write like a practitioner for practitioners.
             - Use markdown formatting as specified.
             - Avoid all listed "Do nots."
-            - Output format must be:
-                - Title: string (unique, high quality, ≤ 120 characters)
-                - Content: markdown-formatted blog post (≤ 120 characters per line)
-                - Tags: list of up to 3 relevant tags
-                - Summary: concise, compelling overview (≤ 35 words)
             - Do NOT include any explanations or extra text.
 
             <editorial_guideline>
@@ -138,7 +137,12 @@ async def writer(ctx: RunContext[None], topic: str) -> Post:
 
 @director_agent.tool(retries=3)
 async def editor(ctx: RunContext[None], post: Post) -> Post:
-    """A professional technical content editor"""
+    """A professional technical content editor
+
+    Args:
+        ctx: The context
+        post: The post to edit
+    """
     print("Calling Editor")
     result = await editor_agent.run(
         textwrap.dedent(
@@ -149,11 +153,6 @@ async def editor(ctx: RunContext[None], post: Post) -> Post:
             - Identify and rewrite unclear, wordy, or off-brand passages.
             - Fix factual, stylistic, or formatting mistakes.
             - Ensure concise, insightful, and practical analysis.
-            - Output format must be:
-                - Title: string (unique, high quality, ≤ 120 characters)
-                - Content: markdown-formatted blog post (≤ 120 characters per line)
-                - Tags: list of up to 3 relevant tags
-                - Summary: concise, compelling overview (≤ 35 words)
             - Do NOT include any explanations or extra text.
 
             <post>
@@ -180,7 +179,12 @@ async def editor(ctx: RunContext[None], post: Post) -> Post:
 
 @director_agent.tool(retries=3)
 async def seo(ctx: RunContext[None], post: Post) -> Post:
-    """A professional SEO specialist"""
+    """A professional SEO specialist
+
+    Args:
+        ctx: The context
+        post: The post to analyze and optimize
+    """
     print("Calling SEO")
     result = await seo_agent.run(
         textwrap.dedent(
@@ -192,11 +196,6 @@ async def seo(ctx: RunContext[None], post: Post) -> Post:
             - Adjust headings and tags where needed.
             - Ensure meta data is concise and compelling.
             - Do not compromise clarity or credibility.
-            - Output format must be:
-                - Title: string (unique, high quality, ≤ 120 characters)
-                - Content: markdown-formatted blog post (≤ 120 characters per line)
-                - Tags: list of up to 3 relevant tags
-                - Summary: concise, compelling overview (≤ 35 words)
             - Do NOT include any explanations or extra text.
 
             <post>
@@ -223,7 +222,12 @@ async def seo(ctx: RunContext[None], post: Post) -> Post:
 
 @director_agent.tool(retries=3)
 async def tech_lead(ctx: RunContext[None], post: Post) -> Post:
-    """A professional technical lead"""
+    """A professional technical lead
+
+    Args:
+        ctx: The context
+        post: The post to review the technical correctness
+    """
     print("Calling Teach Lead")
     result = await tech_lead_agent.run(
         textwrap.dedent(
@@ -235,11 +239,6 @@ async def tech_lead(ctx: RunContext[None], post: Post) -> Post:
               explanations, or missing best practices.
             - Enhance with brief, high-impact practical examples if missing.
             - Verify citation of sources or standards.
-            - Output format must be:
-                - Title: string (unique, high quality, ≤ 120 characters)
-                - Content: markdown-formatted blog post (≤ 120 characters per line)
-                - Tags: list of up to 3 relevant tags
-                - Summary: concise, compelling overview (≤ 35 words)
             - Do NOT include any explanations or extra text.
 
             <post>
