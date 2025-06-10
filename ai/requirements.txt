@@ -1,5 +1,5 @@
 feedparser==6.0.11
 logfire==3.17.0
-pydantic-ai==0.2.14
+pydantic-ai==0.2.16
 python-frontmatter==1.1.0
 toml==0.10.2
