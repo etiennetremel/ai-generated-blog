@@ -1,17 +1,35 @@
 {{ define "main" }}
+<div id="filter-nav">
+  <div id="filter-form">
+    <select id="filter-model">
+      <option value="">All Models</option>
+      {{ $models := slice }}
+      {{ range site.RegularPages }}
+        {{ if .Params.model }}
+          {{ $models = $models | append .Params.model }}
+        {{ end }}
+      {{ end }}
+      {{ $uniqueModels := $models | uniq | sort }}
+      {{ range $uniqueModels }}
+        <option value="{{ . | urlize }}">{{ . }}</option>
+      {{ end }}
+    </select>
+    <button id="filter-btn">Filter</button>
+  </div>
+</div>
 <section id="home">
   {{ .Content }}
   {{ range site.RegularPages }}
-    <article>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      <p>{{ .Summary }}</p>
-      {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-      {{ $dateHuman := .Date | time.Format ":date_long" }}
-      <div class="footer">
-        <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> |
-        <span class="model">{{ .Params.Model }}</span>
-      </div>
-    </article>
+  <article class="{{ .Params.model | urlize }}">
+    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    <p>{{ .Summary }}</p>
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format ":date_long" }}
+    <div class="footer">
+      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time> |
+      <span class="model">{{ .Params.Model }}</span>
+    </div>
+  </article>
   {{ end }}
 </section>
 {{ end }}
