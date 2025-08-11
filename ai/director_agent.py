@@ -63,7 +63,7 @@ include:
 
 director_agent = Agent(
     model,
-    result_type=Union[Post, PostFailed],  # type: ignore
+    output_type=Post,  # structured output expected
     instructions=instructions,
 )
 

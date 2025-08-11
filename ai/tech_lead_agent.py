@@ -16,6 +16,6 @@ unclear explanations, technical errors, or missing practical insights/examples.
 
 tech_lead_agent = Agent(
     model,
-    result_type=Union[Post, PostFailed],  # type: ignore
+    output_type=Post,  # structured output
     instructions=instructions,
 )

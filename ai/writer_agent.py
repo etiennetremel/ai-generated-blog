@@ -18,6 +18,6 @@ application, and insight.
 
 writer_agent = Agent(
     model,
-    result_type=Union[Post, PostFailed],  # type: ignore
+    output_type=Post,  # structured output
     instructions=instructions,
 )
